@@ -129,7 +129,8 @@
     .quote-sub {
       font-size: 0.86em; color: rgba(255,255,255,0.68); line-height: 1.72;
       padding: 18px 22px; background: rgba(255,255,255,0.09);
-      border-radius: 10px; margin-bottom: 26px;
+      border-radius: 0 10px 10px 0; border-left: 3px solid rgba(0,212,160,0.55);
+      margin-bottom: 26px;
     }
     .tags { display: flex; flex-wrap: wrap; gap: 10px; }
     .tag {
@@ -148,7 +149,7 @@
     }
     .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
     .card-d {
-      background: var(--card); border: 1px solid var(--card-b);
+      background: var(--card); border: 1px solid var(--card-b); border-left: 3px solid rgba(0,212,160,0.65);
       border-radius: 14px; padding: 26px 22px;
     }
     .card-icon { margin-bottom: 16px; }
@@ -165,8 +166,8 @@
 
     .plat-active {
       display: flex; align-items: flex-start; gap: 14px;
-      background: rgba(255,209,102,0.13); border: 1px solid rgba(255,209,102,0.3);
-      border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
+      background: rgba(255,209,102,0.13); border: 1px solid rgba(255,209,102,0.25); border-left: 3px solid rgba(255,209,102,0.75);
+      border-radius: 14px; padding: 18px 22px; margin-bottom: 16px;
     }
     .plat-badge {
       font-size: 0.66em; font-weight: 700;
@@ -179,7 +180,7 @@
     .q-item {
       font-size: 0.79em; color: var(--muted);
       padding: 12px 16px; background: rgba(255,255,255,0.09);
-      border-radius: 8px; border-left: 2px solid rgba(255,209,102,0.4); line-height: 1.5;
+      border-radius: 8px; border-left: 3px solid rgba(255,209,102,0.7); line-height: 1.5;
     }
     .q-item strong { color: var(--yellow); }
     .geo {
@@ -197,14 +198,14 @@
     .status-split { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
 
     .card-w {
-      background: rgba(0,212,160,0.12); border: 1px solid rgba(0,212,160,0.25);
+      background: rgba(0,212,160,0.12); border: 1px solid rgba(0,212,160,0.2); border-left: 3px solid rgba(0,212,160,0.65);
       border-radius: 12px; padding: 20px 22px; margin-bottom: 12px;
     }
     .card-w-ttl { font-size: 0.87em; font-weight: 700; color: var(--teal); margin-bottom: 6px; }
     .card-w-dsc { font-size: 0.78em; color: var(--muted); line-height: 1.6; }
 
     .try-w {
-      background: rgba(0,212,160,0.16); border: 1px solid rgba(0,212,160,0.3);
+      background: rgba(0,212,160,0.16); border: 1px solid rgba(0,212,160,0.25); border-left: 3px solid rgba(0,212,160,0.75);
       border-radius: 12px; padding: 20px 24px; margin-top: 14px;
     }
     .try-w-lbl { font-size: 0.64em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: var(--teal); margin-bottom: 8px; }
@@ -257,7 +258,7 @@
 
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
     .card-l {
-      background: rgba(255,209,102,0.12); border: 1px solid rgba(255,209,102,0.28);
+      background: rgba(255,209,102,0.12); border: 1px solid rgba(255,209,102,0.22); border-left: 3px solid rgba(255,209,102,0.7);
       border-radius: 14px; padding: 24px 22px;
     }
     .card-l-num {
