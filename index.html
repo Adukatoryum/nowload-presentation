@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NowLoad — УСЁ НА(Ў)ЛАДЗІЦЦА</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -132,11 +133,26 @@
       border-radius: 10px;
       margin-bottom: 26px;
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-    .tag {
-      font-size: 0.73em; font-weight: 500; color: rgba(0,212,160,0.9);
-      background: rgba(0,212,160,0.09); border-radius: 6px; padding: 4px 12px;
+    .tiles { display: flex; flex-wrap: wrap; gap: 14px; }
+    .tile {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      width: 96px; cursor: default;
     }
+    .tile-circle {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .tile-label {
+      font-size: 0.72em; font-weight: 500; color: rgba(255,255,255,0.75);
+      text-align: center; line-height: 1.35;
+    }
+    .tc-green  { background: rgba(0,212,160,0.15);  color: #00d4a0; }
+    .tc-blue   { background: rgba(91,174,247,0.15); color: #5baef7; }
+    .tc-purple { background: rgba(176,126,245,0.15);color: #b07ef5; }
+    .tc-amber  { background: rgba(245,166,35,0.15); color: #f5a623; }
+    .tc-red    { background: rgba(240,112,112,0.15);color: #f07070; }
+    .tc-teal   { background: rgba(80,227,194,0.15); color: #50e3c2; }
 
     /* ══════════════════════════════════════
        ПАДЫХОД  (dark)
@@ -385,13 +401,31 @@
       <p>Нашы дзеці робяць першыя крокі ў свет самастойнасці — думаюць дзе зарабіць і куды ўкласці свае першыя грошы, як пачаць жыць асобна ад бацькоў, дзе вучыцца і як рэалізаваць свае творчыя памкненні.</p>
     </div>
     <p class="quote-sub">Яны робяць гэта ў надзвычай неспрыяльных, а часам небяспечных умовах эміграцыі і нестабільнасці фінансавай ды прававой сістэмы пры аўтарытарным рэжыме ў роднай краіне.</p>
-    <div class="tags">
-      <span class="tag">Грошы</span>
-      <span class="tag">Самастойнае жыццё</span>
-      <span class="tag">Камунікацыя</span>
-      <span class="tag">Адукацыя</span>
-      <span class="tag">Здароўе</span>
-      <span class="tag">Творчасць і самарэалізацыя</span>
+    <div class="tiles">
+      <div class="tile">
+        <div class="tile-circle tc-green"><i class="ti ti-coin"></i></div>
+        <span class="tile-label">Грошы</span>
+      </div>
+      <div class="tile">
+        <div class="tile-circle tc-blue"><i class="ti ti-home"></i></div>
+        <span class="tile-label">Самастойнае жыццё</span>
+      </div>
+      <div class="tile">
+        <div class="tile-circle tc-purple"><i class="ti ti-messages"></i></div>
+        <span class="tile-label">Камунікацыя</span>
+      </div>
+      <div class="tile">
+        <div class="tile-circle tc-amber"><i class="ti ti-book"></i></div>
+        <span class="tile-label">Адукацыя</span>
+      </div>
+      <div class="tile">
+        <div class="tile-circle tc-red"><i class="ti ti-heart"></i></div>
+        <span class="tile-label">Здароўе</span>
+      </div>
+      <div class="tile">
+        <div class="tile-circle tc-teal"><i class="ti ti-palette"></i></div>
+        <span class="tile-label">Творчасць і самарэалізацыя</span>
+      </div>
     </div>
   </div>
 </section>
@@ -505,7 +539,7 @@
         <div class="try-w">
           <div class="try-w-lbl">Як паспрабаваць</div>
           <div class="try-w-steps">
-            Telegram: <strong>@NOWLOAD_BOT</strong><br>
+            Telegram: <a href="https://t.me/NOWLOAD_BOT" target="_blank" style="color:var(--teal); font-weight:700; text-decoration:none;">@NOWLOAD_BOT</a><br>
             /start → Хачу мець свае грошы → Польшча<br>
             → Ці магу я тут працаваць / Патрэбна дапамога прама зараз
           </div>
