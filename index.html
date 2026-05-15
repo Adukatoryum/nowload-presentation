@@ -99,7 +99,7 @@
     .hero-wm {
       display: flex; align-items: flex-end; line-height: 0.9;
       font-size: clamp(4.5em, 9vw, 7.5em);
-      font-weight: 900; letter-spacing: -0.05em;
+      font-weight: 900; letter-spacing: 0.08em;
       margin-bottom: 10px;
     }
     .hero-wm .wm-dot-big {
@@ -363,7 +363,12 @@
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-inner">
-    <img src="logo-vert.png" alt="NowLoad" style="height:220px; margin-bottom:28px; display:block;">
+    <div style="display:inline-block; margin-bottom:10px;">
+      <div class="hero-wm"><span class="wm-now">Now</span><span class="wm-load">Load</span></div>
+      <div style="position:relative; height:3px; background:var(--teal); border-radius:2px; margin-top:8px;">
+        <div style="position:absolute; right:-6px; top:50%; transform:translateY(-50%); width:13px; height:13px; border-radius:50%; background:var(--yellow);"></div>
+      </div>
+    </div>
     <div class="hero-tag">УСЁ НА(<span class="yw">Ў</span>)ЛАДЗІЦЦА</div>
     <div class="hero-desc">Чат-бот навігатар для беларускіх падлеткаў і моладзі (13–25 гадоў)</div>
     <p class="hero-sub">Адкрытая прапанова да лакальных цэнтраў і адукацыйных ініцыятыў у эміграцыі, спецыялістаў-адукатараў у Беларусі</p>
