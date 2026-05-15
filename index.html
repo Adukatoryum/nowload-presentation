@@ -15,8 +15,8 @@
       --yellow: #ffd166;
       --white:  #ffffff;
       --muted:  rgba(255,255,255,0.52);
-      --card:   rgba(255,255,255,0.055);
-      --card-b: rgba(0,212,160,0.18);
+      --card:   rgba(255,255,255,0.10);
+      --card-b: rgba(0,212,160,0.28);
     }
 
     html { scroll-behavior: smooth; }
@@ -67,12 +67,13 @@
     }
 
     /* ── BUTTONS ── */
-    .btn { display: inline-block; font-size: 0.88em; font-weight: 700; border-radius: 8px; padding: 13px 28px; text-decoration: none; transition: all .2s; }
+    .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-block; font-size: 0.95em; font-weight: 700; border-radius: 10px; padding: 17px 36px; text-decoration: none; transition: all .2s; min-width: 230px; text-align: center; }
     .btn-solid { background: var(--teal); color: var(--dark); }
     .btn-solid:hover { opacity: 0.85; }
-    .btn-ghost-light { color: var(--teal); border: 1.5px solid var(--teal); margin-left: 12px; }
+    .btn-ghost-light { color: var(--teal); border: 1.5px solid var(--teal); }
     .btn-ghost-light:hover { background: var(--teal); color: var(--dark); }
-    .btn-ghost-dark { color: var(--dark); border: 1.5px solid rgba(0,0,0,0.25); margin-left: 12px; }
+    .btn-ghost-dark { color: var(--dark); border: 1.5px solid rgba(0,0,0,0.25); }
     .btn-ghost-dark:hover { background: var(--dark); color: var(--white); }
 
     /* ══════════════════════════════════════
@@ -120,14 +121,14 @@
     .quote-block {
       border-left: 3px solid var(--teal);
       padding: 22px 28px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.09);
       border-radius: 0 12px 12px 0;
       margin-bottom: 16px;
     }
     .quote-block p { font-size: 1em; color: var(--white); line-height: 1.8; font-style: italic; }
     .quote-sub {
       font-size: 0.86em; color: rgba(255,255,255,0.68); line-height: 1.72;
-      padding: 18px 22px; background: rgba(255,255,255,0.04);
+      padding: 18px 22px; background: rgba(255,255,255,0.09);
       border-radius: 10px; margin-bottom: 26px;
     }
     .tags { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -164,7 +165,7 @@
 
     .plat-active {
       display: flex; align-items: flex-start; gap: 14px;
-      background: rgba(255,209,102,0.07); border: 1px solid rgba(255,209,102,0.25);
+      background: rgba(255,209,102,0.13); border: 1px solid rgba(255,209,102,0.3);
       border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
     }
     .plat-badge {
@@ -177,8 +178,8 @@
     .grid2q { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
     .q-item {
       font-size: 0.79em; color: var(--muted);
-      padding: 12px 16px; background: rgba(255,255,255,0.04);
-      border-radius: 8px; border-left: 2px solid rgba(255,209,102,0.35); line-height: 1.5;
+      padding: 12px 16px; background: rgba(255,255,255,0.09);
+      border-radius: 8px; border-left: 2px solid rgba(255,209,102,0.4); line-height: 1.5;
     }
     .q-item strong { color: var(--yellow); }
     .geo {
@@ -196,14 +197,14 @@
     .status-split { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
 
     .card-w {
-      background: rgba(0,212,160,0.06); border: 1px solid rgba(0,212,160,0.18);
+      background: rgba(0,212,160,0.12); border: 1px solid rgba(0,212,160,0.25);
       border-radius: 12px; padding: 20px 22px; margin-bottom: 12px;
     }
     .card-w-ttl { font-size: 0.87em; font-weight: 700; color: var(--teal); margin-bottom: 6px; }
     .card-w-dsc { font-size: 0.78em; color: var(--muted); line-height: 1.6; }
 
     .try-w {
-      background: rgba(0,212,160,0.1); border: 1px solid rgba(0,212,160,0.25);
+      background: rgba(0,212,160,0.16); border: 1px solid rgba(0,212,160,0.3);
       border-radius: 12px; padding: 20px 24px; margin-top: 14px;
     }
     .try-w-lbl { font-size: 0.64em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: var(--teal); margin-bottom: 8px; }
@@ -256,7 +257,7 @@
 
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
     .card-l {
-      background: rgba(255,209,102,0.06); border: 1px solid rgba(255,209,102,0.2);
+      background: rgba(255,209,102,0.12); border: 1px solid rgba(255,209,102,0.28);
       border-radius: 14px; padding: 24px 22px;
     }
     .card-l-num {
@@ -276,7 +277,7 @@
     .gov-txt { font-size: 0.92em; color: rgba(255,255,255,0.78); line-height: 1.8; max-width: 640px; margin-bottom: 16px; }
     .gov-hl { color: var(--teal); font-weight: 600; }
     .gov-box {
-      background: rgba(255,255,255,0.04); border-left: 3px solid var(--teal);
+      background: rgba(255,255,255,0.09); border-left: 3px solid var(--teal);
       border-radius: 0 12px 12px 0; padding: 18px 24px;
       font-size: 0.86em; color: rgba(255,255,255,0.7); line-height: 1.7;
     }
@@ -329,7 +330,8 @@
       .grid3, .grid2, .grid2q, .status-split, .contacts-split { grid-template-columns: 1fr; }
       .hero-deco { display: none; }
       .hero-wm { font-size: clamp(2rem, 17.5vw, 4.5rem); letter-spacing: 0; }
-      .btn-ghost-light, .btn-ghost-dark { margin-left: 0; margin-top: 10px; display: block; text-align: center; }
+      .btn-row { flex-direction: column; }
+      .btn-row .btn { width: 100%; min-width: unset; }
       .footer-inner { flex-direction: column; gap: 6px; text-align: center; padding: 24px 20px; }
     }
   </style>
@@ -365,7 +367,7 @@
     <div class="hero-tag">УСЁ НА(<span class="yw">Ў</span>)ЛАДЗІЦЦА</div>
     <div class="hero-desc">Чат-бот навігатар для беларускіх падлеткаў і моладзі (13–25 гадоў)</div>
     <p class="hero-sub">Адкрытая прапанова да лакальных цэнтраў і адукацыйных ініцыятыў у эміграцыі, спецыялістаў-адукатараў у Беларусі</p>
-    <div>
+    <div class="btn-row">
       <a class="btn btn-solid" href="#context">Даведацца больш</a>
       <a class="btn btn-ghost-light" href="#contacts">Давайце зробім разам</a>
     </div>
