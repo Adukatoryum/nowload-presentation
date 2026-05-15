@@ -37,16 +37,7 @@
     .wm-load { color: var(--teal); }
     .wm-underline { display: block; height: 2px; background: var(--teal); border-radius: 1px; }
 
-    /* yellow dot above Ў */
-    .yw { position: relative; display: inline-block; }
-    .yw::before {
-      content: '';
-      position: absolute;
-      top: -7px; left: 50%; transform: translateX(-50%);
-      width: 5px; height: 5px;
-      border-radius: 50%; background: var(--yellow);
-    }
-    .hero-tag .yw::before { width: 7px; height: 7px; top: -9px; }
+    .yw { display: inline; }
     .nav-links { display: flex; gap: 26px; list-style: none; }
     .nav-links a { font-size: 0.76em; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
     .nav-links a:hover { color: var(--teal); }
@@ -99,7 +90,7 @@
     .hero-wm {
       display: flex; align-items: flex-end; line-height: 0.9;
       font-size: clamp(4.5em, 9vw, 7.5em);
-      font-weight: 900; letter-spacing: 0.08em;
+      font-weight: 900; letter-spacing: 0.048em;
       margin-bottom: 10px;
     }
     .hero-wm .wm-dot-big {
