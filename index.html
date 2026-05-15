@@ -32,10 +32,21 @@
       border-bottom: 1px solid rgba(0,212,160,0.1);
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-wm { font-size: 1.18em; font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
+    .nav-wm { font-size: 1.18em; font-weight: 900; letter-spacing: -0.04em; line-height: 1; display: flex; flex-direction: column; gap: 3px; }
     .wm-now  { color: var(--white); }
     .wm-load { color: var(--teal); }
-    .wm-dot  { color: var(--yellow); }
+    .wm-underline { display: block; height: 2px; background: var(--teal); border-radius: 1px; }
+
+    /* yellow dot above Ў */
+    .yw { position: relative; display: inline-block; }
+    .yw::before {
+      content: '';
+      position: absolute;
+      top: -7px; left: 50%; transform: translateX(-50%);
+      width: 5px; height: 5px;
+      border-radius: 50%; background: var(--yellow);
+    }
+    .hero-tag .yw::before { width: 7px; height: 7px; top: -9px; }
     .nav-links { display: flex; gap: 26px; list-style: none; }
     .nav-links a { font-size: 0.76em; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
     .nav-links a:hover { color: var(--teal); }
@@ -336,14 +347,10 @@
 <!-- ── NAV ── -->
 <nav>
   <a class="nav-logo" href="#hero">
-    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-      <circle cx="13" cy="13" r="12" stroke="#00d4a0" stroke-width="1.4"/>
-      <circle cx="13" cy="13" r="7.5" stroke="#00d4a0" stroke-width="1"/>
-      <path d="M13 17.5V9.5" stroke="#00d4a0" stroke-width="1.7" stroke-linecap="round"/>
-      <path d="M9.5 13L13 8.5L16.5 13" stroke="#00d4a0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="13" cy="8" r="2" fill="#ffd166"/>
-    </svg>
-    <div class="nav-wm"><span class="wm-now">Now</span><span class="wm-load">Load</span><span class="wm-dot">.</span></div>
+    <div class="nav-wm">
+      <div><span class="wm-now">Now</span><span class="wm-load">Load</span></div>
+      <span class="wm-underline"></span>
+    </div>
   </a>
   <ul class="nav-links">
     <li><a href="#context">Кантэкст</a></li>
@@ -359,10 +366,11 @@
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-wm">
-      <span class="wm-now">Now</span><span class="wm-load">Load</span><span class="wm-dot-big"></span>
+    <div style="display:inline-flex; flex-direction:column; gap:6px; margin-bottom:10px;">
+      <div class="hero-wm"><span class="wm-now">Now</span><span class="wm-load">Load</span></div>
+      <span class="wm-underline"></span>
     </div>
-    <div class="hero-tag">УСЁ НА(Ў)ЛАДЗІЦЦА</div>
+    <div class="hero-tag">УСЁ НА(<span class="yw">Ў</span>)ЛАДЗІЦЦА</div>
     <div class="hero-desc">Чат-бот навігатар для беларускіх падлеткаў і моладзі (13–25 гадоў)</div>
     <p class="hero-sub">Адкрытая прапанова да лакальных цэнтраў і адукацыйных ініцыятыў у эміграцыі, спецыялістаў-адукатараў у Беларусі</p>
     <div>
@@ -370,26 +378,6 @@
       <a class="btn btn-ghost-light" href="#contacts">Давайце зробім разам</a>
     </div>
 
-    <!-- Decorative logo SVG -->
-    <svg class="hero-deco" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- outer rings -->
-      <circle cx="200" cy="200" r="197" stroke="rgba(0,212,160,0.1)" stroke-width="1.5"/>
-      <circle cx="200" cy="200" r="155" stroke="rgba(0,212,160,0.13)" stroke-width="1"/>
-      <!-- main circle (logo) -->
-      <circle cx="200" cy="200" r="100" stroke="#00d4a0" stroke-width="2"/>
-      <!-- inner ring -->
-      <circle cx="200" cy="200" r="65" stroke="rgba(0,212,160,0.35)" stroke-width="1.2"/>
-      <!-- arrow -->
-      <path d="M200 255V155" stroke="#00d4a0" stroke-width="4" stroke-linecap="round"/>
-      <path d="M168 188L200 150L232 188" stroke="#00d4a0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- yellow dot -->
-      <circle cx="200" cy="146" r="10" fill="#ffd166"/>
-      <!-- small ticks on outer ring -->
-      <line x1="200" y1="1" x2="200" y2="14" stroke="rgba(0,212,160,0.4)" stroke-width="1.5"/>
-      <line x1="200" y1="386" x2="200" y2="399" stroke="rgba(0,212,160,0.4)" stroke-width="1.5"/>
-      <line x1="1" y1="200" x2="14" y2="200" stroke="rgba(0,212,160,0.4)" stroke-width="1.5"/>
-      <line x1="386" y1="200" x2="399" y2="200" stroke="rgba(0,212,160,0.4)" stroke-width="1.5"/>
-    </svg>
   </div>
 </section>
 
@@ -632,8 +620,11 @@
 <!-- ── FOOTER ── -->
 <div class="s-footer">
   <div class="footer-inner">
-    <div class="footer-wm"><span class="wm-now">Now</span><span class="wm-load">Load</span><span class="wm-dot">.</span></div>
-    <div class="footer-tag">УСЁ НА(Ў)ЛАДЗІЦЦА</div>
+    <div style="display:inline-flex; flex-direction:column; gap:3px;">
+      <div class="footer-wm"><span class="wm-now">Now</span><span class="wm-load">Load</span></div>
+      <span class="wm-underline"></span>
+    </div>
+    <div class="footer-tag">УСЁ НА(<span class="yw">Ў</span>)ЛАДЗІЦЦА</div>
   </div>
 </div>
 
