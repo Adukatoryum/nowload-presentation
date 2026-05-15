@@ -89,8 +89,8 @@
     }
     .hero-wm {
       display: flex; align-items: flex-end; line-height: 0.9;
-      font-size: clamp(4.5em, 9vw, 7.5em);
-      font-weight: 900; letter-spacing: 0.029em;
+      font-size: clamp(2rem, 9vw, 7.5rem);
+      font-weight: 900; letter-spacing: 0.015em;
       margin-bottom: 10px;
     }
     .hero-wm .wm-dot-big {
@@ -318,7 +318,7 @@
       max-width: 1100px; margin: 0 auto; padding: 28px 52px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .footer-wm { font-size: 1em; font-weight: 900; letter-spacing: -0.04em; }
+    .footer-wm { font-size: 1em; font-weight: 900; letter-spacing: -0.025em; }
     .footer-tag { font-size: 0.66em; color: var(--muted); letter-spacing: 0.06em; }
 
     /* ── RESPONSIVE ── */
@@ -328,6 +328,7 @@
       .inner, .hero-inner { padding: 64px 22px; }
       .grid3, .grid2, .grid2q, .status-split, .contacts-split { grid-template-columns: 1fr; }
       .hero-deco { display: none; }
+      .hero-wm { font-size: clamp(2rem, 17.5vw, 4.5rem); letter-spacing: 0; }
       .btn-ghost-light, .btn-ghost-dark { margin-left: 0; margin-top: 10px; display: block; text-align: center; }
       .footer-inner { flex-direction: column; gap: 6px; text-align: center; padding: 24px 20px; }
     }
@@ -356,7 +357,7 @@
   <div class="hero-inner">
     <div style="display:inline-block; margin-bottom:10px;">
       <div class="hero-wm"><span class="wm-now">Now</span><span class="wm-load">Load</span></div>
-      <div style="position:relative; height:3px; margin-top:8px; border-radius:2px; background:rgba(0,70,55,0.5);">
+      <div style="position:relative; height:3px; margin-top:8px; border-radius:2px; background:rgba(0,200,150,0.22);">
         <div style="position:absolute; left:0; top:0; bottom:0; width:86%; background:var(--teal); border-radius:2px;"></div>
         <div style="position:absolute; left:86%; top:50%; transform:translate(-50%,-50%); width:13px; height:13px; border-radius:50%; background:var(--yellow); z-index:1;"></div>
       </div>
@@ -512,7 +513,15 @@
       <div class="phone-wrap">
         <div class="phone">
           <div class="tg-hdr">
-            <div class="tg-av">N</div>
+            <div class="tg-av" style="background:#0b1a1f; padding:0; border:1.5px solid #00d4a0;">
+              <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+                <circle cx="17" cy="17" r="16" fill="#0b1a1f"/>
+                <circle cx="17" cy="17" r="10.5" stroke="#00d4a0" stroke-width="1.2"/>
+                <path d="M17 22V13" stroke="#00d4a0" stroke-width="2" stroke-linecap="round"/>
+                <path d="M13 16.5L17 12L21 16.5" stroke="#00d4a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="17" cy="11.5" r="2.5" fill="#ffd166"/>
+              </svg>
+            </div>
             <div>
               <div class="tg-name">NowLoad</div>
               <div class="tg-online">● online</div>
