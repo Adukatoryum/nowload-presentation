@@ -9,523 +9,342 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:     #0b1a1f;
-      --bg2:    #0f2228;
+      --dark:   #0b1a1f;
+      --dark2:  #0f2228;
       --teal:   #00d4a0;
-      --teal2:  #00b88a;
       --yellow: #ffd166;
       --white:  #ffffff;
-      --muted:  rgba(255,255,255,0.55);
-      --card:   rgba(255,255,255,0.05);
-      --card-border: rgba(0,212,160,0.2);
+      --muted:  rgba(255,255,255,0.52);
+      --card:   rgba(255,255,255,0.055);
+      --card-b: rgba(0,212,160,0.18);
     }
 
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--white);
-      line-height: 1.6;
-    }
+    body { font-family: 'Inter', sans-serif; color: var(--white); line-height: 1.6; }
 
     /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      height: 60px;
-      background: rgba(11,26,31,0.85);
-      backdrop-filter: blur(12px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; height: 62px;
+      background: rgba(11,26,31,0.92);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(0,212,160,0.1);
     }
-    .nav-brand {
-      font-size: 1.15em;
-      font-weight: 900;
-      color: var(--teal);
-      letter-spacing: -0.03em;
-    }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.78em;
-      font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: color .2s;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-wm { font-size: 1.18em; font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
+    .wm-now  { color: var(--white); }
+    .wm-load { color: var(--teal); }
+    .wm-dot  { color: var(--yellow); }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { font-size: 0.76em; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
     .nav-links a:hover { color: var(--teal); }
     .nav-cta {
-      font-size: 0.78em;
-      font-weight: 600;
-      color: var(--teal);
-      border: 1.5px solid var(--teal);
-      border-radius: 6px;
-      padding: 7px 18px;
-      text-decoration: none;
-      transition: background .2s, color .2s;
+      font-size: 0.76em; font-weight: 700;
+      color: var(--dark); background: var(--teal);
+      border-radius: 6px; padding: 8px 18px;
+      text-decoration: none; transition: opacity .2s;
     }
-    .nav-cta:hover { background: var(--teal); color: var(--bg); }
+    .nav-cta:hover { opacity: 0.85; }
 
-    /* ── SECTIONS ── */
-    section {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 100px 48px;
-    }
-    section:first-of-type { padding-top: 140px; }
+    /* ── INNER WRAPPER ── */
+    .inner { width: 100%; max-width: 1100px; margin: 0 auto; padding: 80px 52px; }
 
-    .section-label {
-      display: inline-block;
-      font-size: 0.68em;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 24px;
+    /* ── SECTION LABEL ── */
+    .lbl {
+      display: inline-block; font-size: 0.64em; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 18px;
     }
+    .lbl-teal  { color: var(--teal); }
+    .lbl-dark  { color: rgba(0,0,0,0.4); }
 
     h2 {
-      font-size: 2em;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    h3 {
-      font-size: 1.25em;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-    p { color: rgba(255,255,255,0.8); }
-
-    /* divider */
-    .divider {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      height: 1px;
-      background: rgba(255,255,255,0.06);
+      font-size: clamp(1.65em, 2.8vw, 2.3em);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 14px;
     }
 
-    /* ── HERO ── */
+    /* ── BUTTONS ── */
+    .btn { display: inline-block; font-size: 0.88em; font-weight: 700; border-radius: 8px; padding: 13px 28px; text-decoration: none; transition: all .2s; }
+    .btn-solid { background: var(--teal); color: var(--dark); }
+    .btn-solid:hover { opacity: 0.85; }
+    .btn-ghost-light { color: var(--teal); border: 1.5px solid var(--teal); margin-left: 12px; }
+    .btn-ghost-light:hover { background: var(--teal); color: var(--dark); }
+    .btn-ghost-dark { color: var(--dark); border: 1.5px solid rgba(0,0,0,0.25); margin-left: 12px; }
+    .btn-ghost-dark:hover { background: var(--dark); color: var(--white); }
+
+    /* ══════════════════════════════════════
+       HERO  (dark)
+    ══════════════════════════════════════ */
     #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 100px;
+      background: var(--dark);
+      position: relative; overflow: hidden;
     }
-    .hero-brand {
-      font-size: clamp(3.5em, 8vw, 6em);
-      font-weight: 900;
-      color: var(--teal);
-      letter-spacing: -0.04em;
-      line-height: 0.95;
-      margin-bottom: 6px;
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 52px;
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+      padding-top: 80px; padding-bottom: 80px;
     }
-    .hero-tagline {
-      font-size: 0.95em;
-      font-weight: 600;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      margin-bottom: 36px;
+    .hero-wm {
+      display: flex; align-items: flex-end; line-height: 0.9;
+      font-size: clamp(4.5em, 9vw, 7.5em);
+      font-weight: 900; letter-spacing: -0.05em;
+      margin-bottom: 10px;
     }
-    .hero-title {
-      font-size: clamp(1.2em, 2.5vw, 1.6em);
-      font-weight: 700;
-      color: var(--white);
-      max-width: 620px;
-      line-height: 1.3;
+    .hero-wm .wm-dot-big {
+      display: inline-block; width: clamp(12px,1.8vw,18px); height: clamp(12px,1.8vw,18px);
+      border-radius: 50%; background: var(--yellow);
+      margin-left: 5px; margin-bottom: clamp(8px,1.4vw,14px);
+    }
+    .hero-tag { font-size: 0.85em; font-weight: 600; color: var(--muted); letter-spacing: 0.07em; margin-bottom: 44px; }
+    .hero-desc {
+      font-size: clamp(1em, 1.8vw, 1.3em); font-weight: 700;
+      color: var(--white); max-width: 540px; line-height: 1.3; margin-bottom: 14px;
+    }
+    .hero-sub { font-size: 0.87em; color: var(--muted); max-width: 460px; line-height: 1.75; margin-bottom: 44px; }
+
+    /* hero SVG deco */
+    .hero-deco {
+      position: absolute; right: 52px; top: 50%; transform: translateY(-50%);
+      width: min(400px, 36vw); height: min(400px, 36vw);
+      pointer-events: none; opacity: 0.9;
+    }
+
+    /* ══════════════════════════════════════
+       КАНТЭКСТ  (dark2)
+    ══════════════════════════════════════ */
+    #context { background: var(--dark2); }
+
+    .quote-block {
+      border-left: 3px solid var(--teal);
+      padding: 22px 28px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 0 12px 12px 0;
       margin-bottom: 16px;
     }
-    .hero-sub {
-      font-size: 0.9em;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 44px;
-    }
-    .btn-primary {
-      display: inline-block;
-      font-size: 0.9em;
-      font-weight: 600;
-      color: var(--bg);
-      background: var(--teal);
-      border-radius: 8px;
-      padding: 14px 32px;
-      text-decoration: none;
-      transition: opacity .2s;
-    }
-    .btn-primary:hover { opacity: 0.85; }
-    .btn-outline {
-      display: inline-block;
-      font-size: 0.9em;
-      font-weight: 600;
-      color: var(--teal);
-      border: 1.5px solid var(--teal);
-      border-radius: 8px;
-      padding: 13px 28px;
-      text-decoration: none;
-      margin-left: 14px;
-      transition: background .2s, color .2s;
-    }
-    .btn-outline:hover { background: var(--teal); color: var(--bg); }
-    .deco-circle {
-      position: absolute;
-      right: -80px; top: 50%;
-      transform: translateY(-50%);
-      width: 460px; height: 460px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(0,212,160,0.18);
-      pointer-events: none;
-    }
-    .deco-circle::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 280px; height: 280px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,212,160,0.1);
-    }
-    .deco-dot {
-      position: absolute;
-      right: 200px;
-      top: calc(50% - 175px);
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      background: var(--yellow);
-    }
-
-    /* ── CONTEXT ── */
-    .quote-wrap {
-      position: relative;
-      border-left: 3px solid var(--teal);
-      padding: 24px 32px;
-      background: var(--card);
-      border-radius: 0 12px 12px 0;
-      margin-bottom: 20px;
-    }
-    .quote-text {
-      font-size: 1.05em;
-      color: var(--white);
-      line-height: 1.75;
-      font-style: italic;
-    }
+    .quote-block p { font-size: 1em; color: var(--white); line-height: 1.8; font-style: italic; }
     .quote-sub {
-      font-size: 0.88em;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.7;
-      padding: 20px 24px;
-      background: var(--card);
-      border-radius: 10px;
-      margin-bottom: 28px;
+      font-size: 0.86em; color: rgba(255,255,255,0.68); line-height: 1.72;
+      padding: 18px 22px; background: rgba(255,255,255,0.04);
+      border-radius: 10px; margin-bottom: 26px;
     }
-    .tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
     .tag {
-      font-size: 0.75em;
-      font-weight: 600;
-      color: var(--teal);
-      border: 1px solid rgba(0,212,160,0.4);
-      border-radius: 20px;
-      padding: 6px 16px;
+      font-size: 0.73em; font-weight: 600; color: var(--teal);
+      border: 1px solid rgba(0,212,160,0.32); border-radius: 20px; padding: 5px 14px;
     }
 
-    /* ── APPROACH ── */
-    .approach-intro {
-      font-size: 0.95em;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.75;
-      max-width: 680px;
-      margin-bottom: 36px;
-    }
-    .approach-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .approach-card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 28px 24px;
-    }
-    .approach-num {
-      font-size: 2.2em;
-      font-weight: 900;
-      color: var(--teal);
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-    .approach-title {
-      font-size: 0.9em;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-    .approach-desc {
-      font-size: 0.8em;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    /* ══════════════════════════════════════
+       ПАДЫХОД  (dark)
+    ══════════════════════════════════════ */
+    #approach { background: var(--dark); }
 
-    /* ── PLATFORM ── */
-    .platform-active {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      background: rgba(0,212,160,0.08);
-      border: 1px solid rgba(0,212,160,0.3);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 20px;
+    .approach-lead {
+      font-size: 0.91em; color: rgba(255,255,255,0.68);
+      line-height: 1.78; max-width: 620px; margin-bottom: 32px;
     }
-    .platform-badge {
-      font-size: 0.7em;
-      font-weight: 700;
-      color: var(--bg);
-      background: var(--teal);
-      border-radius: 4px;
-      padding: 4px 10px;
-      white-space: nowrap;
-      margin-top: 2px;
-      flex-shrink: 0;
+    .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .card-d {
+      background: var(--card); border: 1px solid var(--card-b);
+      border-radius: 14px; padding: 26px 22px;
     }
-    .platform-active-text {
-      font-size: 0.9em;
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.5;
-    }
-    .platform-queue {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .queue-item {
-      font-size: 0.82em;
-      color: var(--muted);
-      padding: 14px 18px;
-      background: var(--card);
-      border-radius: 10px;
-      border-left: 2px solid rgba(0,212,160,0.2);
-    }
-    .queue-item strong { color: rgba(255,255,255,0.85); }
-    .geo-note {
-      font-size: 0.78em;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 16px;
-    }
+    .card-icon { margin-bottom: 16px; }
+    .card-num { font-size: 2em; font-weight: 900; color: var(--teal); line-height: 1; margin-bottom: 10px; }
+    .card-ttl { font-size: 0.88em; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .card-dsc { font-size: 0.78em; color: var(--muted); line-height: 1.6; }
 
-    /* ── STATUS ── */
-    .status-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-    .status-card {
-      background: var(--card);
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.07);
-      padding: 22px 24px;
-    }
-    .status-card-title {
-      font-size: 0.9em;
-      font-weight: 700;
-      color: var(--teal);
-      margin-bottom: 8px;
-    }
-    .status-card-desc {
-      font-size: 0.8em;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.65;
-    }
-    .try-box {
-      background: rgba(0,212,160,0.06);
-      border: 1px solid rgba(0,212,160,0.25);
-      border-radius: 12px;
-      padding: 22px 28px;
-    }
-    .try-box-label {
-      font-size: 0.7em;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--teal);
-      margin-bottom: 10px;
-    }
-    .try-box-steps {
-      font-size: 0.85em;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.75;
-    }
-    .try-box-steps strong { color: var(--white); font-weight: 700; }
+    /* ══════════════════════════════════════
+       ПЛАТФОРМА  (yellow)
+    ══════════════════════════════════════ */
+    #platform { background: var(--yellow); color: var(--dark); }
+    #platform h2 { color: var(--dark); }
+    #platform p  { color: rgba(0,0,0,0.62); }
 
-    /* ── PARTNERSHIP ── */
-    .partner-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .plat-active {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
     }
-    .partner-card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 26px 24px;
+    .plat-badge {
+      font-size: 0.66em; font-weight: 700;
+      color: var(--yellow); background: var(--dark);
+      border-radius: 4px; padding: 3px 9px;
+      white-space: nowrap; margin-top: 2px; flex-shrink: 0;
     }
-    .partner-num {
-      font-size: 0.75em;
-      font-weight: 700;
-      color: var(--bg);
-      background: var(--teal);
-      border-radius: 50%;
-      width: 30px; height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
+    .plat-txt { font-size: 0.88em; font-weight: 600; color: var(--dark); line-height: 1.5; }
+    .grid2q { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .q-item {
+      font-size: 0.79em; color: rgba(0,0,0,0.65);
+      padding: 12px 16px; background: rgba(0,0,0,0.07);
+      border-radius: 8px; border-left: 2px solid rgba(0,0,0,0.15); line-height: 1.5;
     }
-    .partner-title {
-      font-size: 0.9em;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 8px;
+    .q-item strong { color: var(--dark); }
+    .geo {
+      font-size: 0.75em; color: rgba(0,0,0,0.5);
+      border-top: 1px solid rgba(0,0,0,0.1); padding-top: 14px;
     }
-    .partner-desc {
-      font-size: 0.8em;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .geo strong { color: rgba(0,0,0,0.75); }
 
-    /* ── GOV ── */
-    .gov-text {
-      font-size: 0.95em;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.8;
-      max-width: 680px;
-      margin-bottom: 20px;
-    }
-    .gov-highlight { color: var(--teal); font-weight: 600; }
-    .gov-offline {
-      background: var(--card);
-      border-left: 3px solid var(--teal);
-      border-radius: 0 12px 12px 0;
-      padding: 20px 28px;
-      font-size: 0.88em;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.7;
-    }
-    .gov-offline strong { color: var(--white); }
+    /* ══════════════════════════════════════
+       БЯГУЧЫ СТАН  (white)
+    ══════════════════════════════════════ */
+    #status { background: var(--white); color: var(--dark); }
+    #status h2 { color: var(--dark); }
+    #status .lbl-dark { color: rgba(0,0,0,0.38); }
 
-    /* ── CONTACTS ── */
-    #contacts {
-      position: relative;
+    .status-split { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+
+    .card-w {
+      background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 12px; padding: 20px 22px; margin-bottom: 12px;
+    }
+    .card-w-ttl { font-size: 0.87em; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .card-w-dsc { font-size: 0.78em; color: rgba(0,0,0,0.58); line-height: 1.6; }
+
+    .try-w {
+      background: var(--dark); border-radius: 12px; padding: 20px 24px; margin-top: 14px;
+    }
+    .try-w-lbl { font-size: 0.64em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: var(--teal); margin-bottom: 8px; }
+    .try-w-steps { font-size: 0.82em; color: rgba(255,255,255,0.78); line-height: 1.75; }
+    .try-w-steps strong { color: var(--white); }
+
+    /* phone mockup */
+    .phone-wrap { display: flex; justify-content: center; }
+    .phone {
+      width: 255px;
+      background: #e8edf2;
+      border-radius: 30px;
       overflow: hidden;
-      padding-bottom: 120px;
+      box-shadow:
+        0 0 0 7px #c8cdd4,
+        0 24px 56px rgba(0,0,0,0.2);
     }
-    .contacts-mission {
-      font-size: 1.05em;
-      color: var(--muted);
-      max-width: 580px;
-      line-height: 1.75;
-      margin-bottom: 8px;
+    .tg-hdr {
+      background: #fff; display: flex; align-items: center; gap: 10px;
+      padding: 11px 14px; border-bottom: 1px solid rgba(0,0,0,0.07);
     }
+    .tg-av {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--teal); display: flex; align-items: center;
+      justify-content: center; font-size: 0.8em; font-weight: 800;
+      color: var(--dark); flex-shrink: 0;
+    }
+    .tg-name { font-size: 0.8em; font-weight: 700; color: #111; line-height: 1.2; }
+    .tg-online { font-size: 0.62em; color: var(--teal); }
+    .tg-body { padding: 10px; background: #e8edf2; display: flex; flex-direction: column; gap: 6px; }
+    .tg-msg {
+      background: #fff; border-radius: 4px 14px 14px 14px;
+      padding: 10px 13px; font-size: 0.7em; color: #111;
+      line-height: 1.55; max-width: 90%; align-self: flex-start;
+    }
+    .tg-msg em { font-style: italic; color: #666; }
+    .tg-btns { display: flex; flex-direction: column; gap: 5px; }
+    .tg-btn {
+      background: var(--teal); border-radius: 8px;
+      padding: 8px 10px; font-size: 0.67em; font-weight: 600;
+      color: var(--dark); text-align: center; line-height: 1.3;
+    }
+    .tg-btn-sos { background: #e8504a; color: #fff; }
+
+    /* ══════════════════════════════════════
+       ПАРТНЁРСТВА  (teal)
+    ══════════════════════════════════════ */
+    #partnership { background: var(--teal); color: var(--dark); }
+    #partnership h2 { color: var(--dark); }
+
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+    .card-l {
+      background: rgba(0,0,0,0.09); border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 14px; padding: 24px 22px;
+    }
+    .card-l-num {
+      font-size: 0.72em; font-weight: 800; color: var(--teal);
+      background: var(--dark); border-radius: 50%;
+      width: 28px; height: 28px; display: flex; align-items: center;
+      justify-content: center; margin-bottom: 12px;
+    }
+    .card-l-ttl { font-size: 0.88em; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .card-l-dsc { font-size: 0.78em; color: rgba(0,0,0,0.62); line-height: 1.6; }
+
+    /* ══════════════════════════════════════
+       КІРАВАННЕ  (dark2)
+    ══════════════════════════════════════ */
+    #governance { background: var(--dark2); }
+
+    .gov-txt { font-size: 0.92em; color: rgba(255,255,255,0.78); line-height: 1.8; max-width: 640px; margin-bottom: 16px; }
+    .gov-hl { color: var(--teal); font-weight: 600; }
+    .gov-box {
+      background: rgba(255,255,255,0.04); border-left: 3px solid var(--teal);
+      border-radius: 0 12px 12px 0; padding: 18px 24px;
+      font-size: 0.86em; color: rgba(255,255,255,0.7); line-height: 1.7;
+    }
+    .gov-box strong { color: var(--white); }
+
+    /* ══════════════════════════════════════
+       КАНТАКТЫ  (dark)
+    ══════════════════════════════════════ */
+    #contacts { background: var(--dark); }
+
+    .contacts-split { display: block; }
+    .contacts-mission { font-size: 1em; color: var(--muted); line-height: 1.78; margin-bottom: 10px; }
     .contacts-mission strong { color: var(--white); }
-    .contacts-sublabel {
-      font-size: 0.85em;
-      color: var(--muted);
-      margin-bottom: 36px;
+    .contacts-sub { font-size: 0.83em; color: var(--muted); margin-bottom: 30px; }
+    .clist { display: flex; flex-direction: column; gap: 14px; }
+    .citem { display: flex; align-items: center; gap: 13px; }
+    .cdot { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+    .clink { font-size: 0.95em; font-weight: 600; color: var(--white); text-decoration: none; transition: color .2s; }
+    .clink:hover { color: var(--teal); }
+
+    /* big logo in contacts */
+    .brand-big { text-align: center; flex-shrink: 0; }
+    .brand-big-name {
+      display: flex; align-items: flex-end; justify-content: center;
+      font-size: clamp(2em, 4vw, 3.5em);
+      font-weight: 900; letter-spacing: -0.05em; line-height: 0.9;
+      margin-top: 16px;
     }
-    .contact-list { display: flex; flex-direction: column; gap: 16px; }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    .brand-big-name .ydot {
+      display: inline-block; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--yellow);
+      margin-left: 3px; margin-bottom: 6px;
     }
-    .contact-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: var(--teal);
-      flex-shrink: 0;
-    }
-    .contact-link {
-      font-size: 1em;
-      font-weight: 600;
-      color: var(--white);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .contact-link:hover { color: var(--teal); }
-    .contacts-deco-circle {
-      position: absolute;
-      right: -60px; top: 50%;
-      transform: translateY(-50%);
-      width: 380px; height: 380px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(0,212,160,0.12);
-      pointer-events: none;
-    }
-    .contacts-deco-dot {
-      position: absolute;
-      right: 178px; top: calc(50% - 148px);
-      width: 11px; height: 11px;
-      border-radius: 50%;
-      background: var(--yellow);
-    }
+    .brand-tag { font-size: 0.68em; color: var(--muted); letter-spacing: 0.08em; margin-top: 10px; }
 
     /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 32px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1100px;
-      margin: 0 auto;
+    .s-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto; padding: 28px 52px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .footer-brand {
-      font-size: 1.2em;
-      font-weight: 900;
-      color: var(--teal);
-      letter-spacing: -0.03em;
-    }
-    .footer-tag {
-      font-size: 0.7em;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
+    .footer-wm { font-size: 1em; font-weight: 900; letter-spacing: -0.04em; }
+    .footer-tag { font-size: 0.66em; color: var(--muted); letter-spacing: 0.06em; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
+    @media (max-width: 800px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
-      section { padding: 72px 20px; }
-      section:first-of-type { padding-top: 100px; }
-      .approach-grid { grid-template-columns: 1fr; }
-      .platform-queue { grid-template-columns: 1fr; }
-      .status-cards { grid-template-columns: 1fr; }
-      .partner-grid { grid-template-columns: 1fr; }
-      .deco-circle, .deco-dot, .contacts-deco-circle, .contacts-deco-dot { display: none; }
-      .btn-outline { margin-left: 0; margin-top: 12px; display: block; text-align: center; }
-      footer { flex-direction: column; gap: 8px; text-align: center; padding: 28px 20px; }
+      .inner, .hero-inner { padding: 64px 22px; }
+      .grid3, .grid2, .grid2q, .status-split, .contacts-split { grid-template-columns: 1fr; }
+      .hero-deco { display: none; }
+      .btn-ghost-light, .btn-ghost-dark { margin-left: 0; margin-top: 10px; display: block; text-align: center; }
+      .footer-inner { flex-direction: column; gap: 6px; text-align: center; padding: 24px 20px; }
     }
   </style>
 </head>
 <body>
 
+<!-- ── NAV ── -->
 <nav>
-  <div class="nav-brand">NowLoad</div>
+  <a class="nav-logo" href="#hero">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+      <circle cx="13" cy="13" r="12" stroke="#00d4a0" stroke-width="1.4"/>
+      <circle cx="13" cy="13" r="7.5" stroke="#00d4a0" stroke-width="1"/>
+      <path d="M13 17.5V9.5" stroke="#00d4a0" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="M9.5 13L13 8.5L16.5 13" stroke="#00d4a0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="13" cy="8" r="2" fill="#ffd166"/>
+    </svg>
+    <div class="nav-wm"><span class="wm-now">Now</span><span class="wm-load">Load</span><span class="wm-dot">.</span></div>
+  </a>
   <ul class="nav-links">
     <li><a href="#context">Кантэкст</a></li>
     <li><a href="#approach">Падыход</a></li>
@@ -533,196 +352,290 @@
     <li><a href="#partnership">Партнёрства</a></li>
     <li><a href="#contacts">Кантакты</a></li>
   </ul>
-  <a class="nav-cta" href="https://t.me/NOWLOAD_BOT" target="_blank">Паспрабаваць бот</a>
+  <a class="nav-cta" href="https://t.me/NOWLOAD_BOT" target="_blank">Паспрабаваць бот →</a>
 </nav>
 
-<!-- HERO -->
+
+<!-- ══ HERO ══ -->
 <section id="hero">
-  <div class="hero-brand">NowLoad</div>
-  <div class="hero-tagline">УСЁ НА(Ў)ЛАДЗІЦЦА</div>
-  <div class="hero-title">Чат-бот навігатар для беларускіх падлеткаў і моладзі (13–25 гадоў)</div>
-  <p class="hero-sub">Адкрытая прапанова да лакальных цэнтраў і адукацыйных ініцыятыў у эміграцыі, спецыялістаў-адукатараў у Беларусі</p>
-  <div>
-    <a class="btn-primary" href="#context">Даведацца больш</a>
-    <a class="btn-outline" href="#contacts">Давайце зробім разам</a>
+  <div class="hero-inner">
+    <div class="hero-wm">
+      <span class="wm-now">Now</span><span class="wm-load">Load</span><span class="wm-dot-big"></span>
+    </div>
+    <div class="hero-tag">УСЁ НА(Ў)ЛАДЗІЦЦА</div>
+    <div class="hero-desc">Чат-бот навігатар для беларускіх падлеткаў і моладзі (13–25 гадоў)</div>
+    <p class="hero-sub">Адкрытая прапанова да лакальных цэнтраў і адукацыйных ініцыятыў у эміграцыі, спецыялістаў-адукатараў у Беларусі</p>
+    <div>
+      <a class="btn btn-solid" href="#context">Даведацца больш</a>
+      <a class="btn btn-ghost-light" href="#contacts">Давайце зробім разам</a>
+    </div>
+
+    <!-- Decorative logo SVG -->
+    <svg class="hero-deco" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- outer rings -->
+      <circle cx="200" cy="200" r="197" stroke="rgba(0,212,160,0.1)" stroke-width="1.5"/>
+      <circle cx="200" cy="200" r="155" stroke="rgba(0,212,160,0.13)" stroke-width="1"/>
+      <!-- main circle (logo) -->
+      <circle cx="200" cy="200" r="100" stroke="#00d4a0" stroke-width="2"/>
+      <!-- inner ring -->
+      <circle cx="200" cy="200" r="65" stroke="rgba(0,212,160,0.35)" stroke-width="1.2"/>
+      <!-- arrow -->
+      <path d="M200 255V155" stroke="#00d4a0" stroke-width="4" stroke-linecap="round"/>
+      <path d="M168 188L200 150L232 188" stroke="#00d4a0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- yellow dot -->
+      <circle cx="200" cy="146" r="10" fill="#ffd166"/>
+      <!-- small ticks on outer ring -->
+      <line x1="200" y1="1" x2="200" y2="14" stroke="rgba(0,212,160,0.4)" stroke-width="1.5"/>
+      <line x1="200" y1="386" x2="200" y2="399" stroke="rgba(0,212,160,0.4)" stroke-width="1.5"/>
+      <line x1="1" y1="200" x2="14" y2="200" stroke="rgba(0,212,160,0.4)" stroke-width="1.5"/>
+      <line x1="386" y1="200" x2="399" y2="200" stroke="rgba(0,212,160,0.4)" stroke-width="1.5"/>
+    </svg>
   </div>
-  <div class="deco-circle"></div>
-  <div class="deco-dot"></div>
 </section>
 
-<div class="divider"></div>
 
-<!-- CONTEXT -->
+<!-- ══ КАНТЭКСТ ══ -->
 <section id="context">
-  <span class="section-label">Кантэкст</span>
-  <div class="quote-wrap">
-    <p class="quote-text">Нашы дзеці робяць першыя крокі ў свет самастойнасці — думаюць дзе зарабіць і куды ўкласці свае першыя грошы, як пачаць жыць асобна ад бацькоў, дзе вучыцца і як рэалізаваць свае творчыя памкненні.</p>
-  </div>
-  <p class="quote-sub">Яны робяць гэта ў надзвычай неспрыяльных, а часам небяспечных умовах эміграцыі і нестабільнасці фінансавай ды прававой сістэмы пры аўтарытарным рэжыме ў роднай краіне.</p>
-  <div class="tag-row">
-    <span class="tag">Грошы</span>
-    <span class="tag">Самастойнае жыццё</span>
-    <span class="tag">Камунікацыя</span>
-    <span class="tag">Адукацыя</span>
-    <span class="tag">Здароўе</span>
-    <span class="tag">Творчасць і самарэалізацыя</span>
+  <div class="inner">
+    <span class="lbl lbl-teal">Кантэкст</span>
+    <div class="quote-block">
+      <p>Нашы дзеці робяць першыя крокі ў свет самастойнасці — думаюць дзе зарабіць і куды ўкласці свае першыя грошы, як пачаць жыць асобна ад бацькоў, дзе вучыцца і як рэалізаваць свае творчыя памкненні.</p>
+    </div>
+    <p class="quote-sub">Яны робяць гэта ў надзвычай неспрыяльных, а часам небяспечных умовах эміграцыі і нестабільнасці фінансавай ды прававой сістэмы пры аўтарытарным рэжыме ў роднай краіне.</p>
+    <div class="tags">
+      <span class="tag">Грошы</span>
+      <span class="tag">Самастойнае жыццё</span>
+      <span class="tag">Камунікацыя</span>
+      <span class="tag">Адукацыя</span>
+      <span class="tag">Здароўе</span>
+      <span class="tag">Творчасць і самарэалізацыя</span>
+    </div>
   </div>
 </section>
 
-<div class="divider"></div>
 
-<!-- APPROACH -->
+<!-- ══ ПАДЫХОД ══ -->
 <section id="approach">
-  <span class="section-label">Падыход</span>
-  <h2>Ад запыту — да кампетэнцыі</h2>
-  <p class="approach-intro">Падыход NowLoad адштурхоўваецца ад рэальных запытаў падлеткаў — не ад тэм, якія лічаць важнымі дарослыя. Падлетак прыходзіць за адказам на сваё пытанне — і ўходзіць з навыкам і разуменнем сваіх правоў.</p>
-  <div class="approach-grid">
-    <div class="approach-card">
-      <div class="approach-num">01</div>
-      <div class="approach-title">Анлайн-навігатар у Telegram</div>
-      <div class="approach-desc">Адказы на канкрэтныя жыццёвыя запыты — тут і зараз</div>
-    </div>
-    <div class="approach-card">
-      <div class="approach-num">02</div>
-      <div class="approach-title">Гульнявыя сцэнарыі ў боце</div>
-      <div class="approach-desc">Магчымасць адыграць сітуацыю, зрабіць выбар, убачыць наступствы</div>
-    </div>
-    <div class="approach-card">
-      <div class="approach-num">03</div>
-      <div class="approach-title">Сімуляцыйныя гульні афлайн</div>
-      <div class="approach-desc">На базе партнёрскіх цэнтраў — групавы досвед і сацыяльнае ўзаемадзеянне</div>
+  <div class="inner">
+    <span class="lbl lbl-teal">Падыход</span>
+    <h2 style="color:var(--white)">Ад запыту — да кампетэнцыі</h2>
+    <p class="approach-lead">Падыход NowLoad адштурхоўваецца ад рэальных запытаў падлеткаў — не ад тэм, якія лічаць важнымі дарослыя. Падлетак прыходзіць за адказам на сваё пытанне — і ўходзіць з навыкам і разуменнем сваіх правоў.</p>
+    <div class="grid3">
+
+      <div class="card-d">
+        <div class="card-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="11" fill="rgba(0,212,160,0.1)"/>
+            <!-- telegram-like chat bubble -->
+            <path d="M8 19c0-6.075 4.925-11 11-11h2c6.075 0 11 4.925 11 11v1c0 6.075-4.925 11-11 11h-2c-6.075 0-11-4.925-11-11v-1z" stroke="#00d4a0" stroke-width="1.5"/>
+            <path d="M14 17h12M14 22h7" stroke="#00d4a0" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- send arrow -->
+            <path d="M28 20l-4-3v6l4-3z" fill="#ffd166"/>
+          </svg>
+        </div>
+        <div class="card-num">01</div>
+        <div class="card-ttl">Анлайн-навігатар у Telegram</div>
+        <div class="card-dsc">Адказы на канкрэтныя жыццёвыя запыты — тут і зараз</div>
+      </div>
+
+      <div class="card-d">
+        <div class="card-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="11" fill="rgba(255,209,102,0.12)"/>
+            <!-- game/choice paths -->
+            <circle cx="20" cy="12" r="3" stroke="#ffd166" stroke-width="1.5"/>
+            <path d="M20 15v4" stroke="#ffd166" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M20 19l-6 4" stroke="#ffd166" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M20 19l6 4" stroke="#ffd166" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="14" cy="26" r="3" stroke="#00d4a0" stroke-width="1.5"/>
+            <circle cx="26" cy="26" r="3" stroke="#00d4a0" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="card-num">02</div>
+        <div class="card-ttl">Гульнявыя сцэнарыі ў боце</div>
+        <div class="card-dsc">Магчымасць адыграць сітуацыю, зрабіць выбар, убачыць наступствы</div>
+      </div>
+
+      <div class="card-d">
+        <div class="card-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="11" fill="rgba(0,212,160,0.1)"/>
+            <!-- people/group -->
+            <circle cx="16" cy="15" r="4" stroke="#00d4a0" stroke-width="1.5"/>
+            <circle cx="26" cy="15" r="4" stroke="#00d4a0" stroke-width="1.5"/>
+            <path d="M8 29c0-4.418 3.582-8 8-8h8c4.418 0 8 3.582 8 8" stroke="#00d4a0" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="21" cy="14" r="1.5" fill="#ffd166"/>
+          </svg>
+        </div>
+        <div class="card-num">03</div>
+        <div class="card-ttl">Сімуляцыйныя гульні афлайн</div>
+        <div class="card-dsc">На базе партнёрскіх цэнтраў — групавы досвед і сацыяльнае ўзаемадзеянне</div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
 
-<!-- PLATFORM -->
+<!-- ══ ПЛАТФОРМА ══ -->
 <section id="platform">
-  <span class="section-label">Платформа</span>
-  <h2>NowLoad-бот</h2>
-  <p style="font-size:0.9em; color:var(--muted); margin-bottom:28px;">Telegram-платформа тэматычных модуляў. Кожны модуль — асобны навігатар па важнай сферы жыцця.</p>
+  <div class="inner">
+    <span class="lbl lbl-dark">Платформа</span>
+    <h2>NowLoad-бот</h2>
+    <p style="font-size:0.9em;margin-bottom:24px;">Telegram-платформа тэматычных модуляў. Кожны модуль — асобны навігатар па важнай сферы жыцця.</p>
 
-  <div class="platform-active">
-    <span class="platform-badge">▶ У распрацоўцы</span>
-    <span class="platform-active-text">NowLoad: <strong>Грошы</strong> — фінансавая граматнасць, легальны заробак, правы на працы</span>
-  </div>
+    <div class="plat-active">
+      <span class="plat-badge">▶ У распрацоўцы</span>
+      <span class="plat-txt">NowLoad: <strong>Грошы</strong> — фінансавая граматнасць, легальны заробак, правы на працы</span>
+    </div>
 
-  <div class="platform-queue">
-    <div class="queue-item"><strong>Самастойнае жыццё</strong> — жыллё, быт, першая арэнда, бюджэт</div>
-    <div class="queue-item"><strong>Здароўе</strong> — медыцына, псіхалагічная падтрымка</div>
-    <div class="queue-item"><strong>Камунікацыя</strong> — адносіны, канфлікты, межы</div>
-    <div class="queue-item"><strong>Творчасць</strong> — як знайсці сябе ў новай краіне</div>
-    <div class="queue-item"><strong>Адукацыя</strong> — школа, ВНУ, курсы, стажыроўкі</div>
-  </div>
+    <div class="grid2q">
+      <div class="q-item"><strong>Самастойнае жыццё</strong> — жыллё, быт, першая арэнда, бюджэт</div>
+      <div class="q-item"><strong>Здароўе</strong> — медыцына, псіхалагічная падтрымка</div>
+      <div class="q-item"><strong>Камунікацыя</strong> — адносіны, канфлікты, межы</div>
+      <div class="q-item"><strong>Творчасць</strong> — як знайсці сябе ў новай краіне</div>
+      <div class="q-item"><strong>Адукацыя</strong> — школа, ВНУ, курсы, стажыроўкі</div>
+    </div>
 
-  <div class="geo-note">
-    Геаграфія: <strong style="color:rgba(255,255,255,0.85)">Польшча → Літва → Германія і далей</strong> · Беларусь: тыя, хто застаецца, і тыя, хто плануе з'ехаць
+    <div class="geo">
+      Геаграфія: <strong>Польшча → Літва → Германія і далей</strong> · Беларусь: тыя, хто застаецца, і тыя, хто плануе з'ехаць
+    </div>
   </div>
 </section>
 
-<div class="divider"></div>
 
-<!-- STATUS -->
+<!-- ══ БЯГУЧЫ СТАН ══ -->
 <section id="status">
-  <span class="section-label">Бягучы стан</span>
-  <h2>Што ўжо гатова</h2>
-  <div class="status-cards">
-    <div class="status-card">
-      <div class="status-card-title">Агульная структура Telegram-платформы</div>
-      <div class="status-card-desc">Бот з тэматычнымі модулямі па ўсіх кірунках жыцця — архітэктура і навігацыя гатовыя</div>
-    </div>
-    <div class="status-card">
-      <div class="status-card-title">NowLoad: Грошы — частка раздзела</div>
-      <div class="status-card-desc">Раздзел па магчымасцях працаўладкавання і легальным заробку ў Польшчы, раздзел экстраннай дапамогі ў праблемных сітуацыях</div>
-    </div>
-  </div>
-  <div class="try-box">
-    <div class="try-box-label">Як паспрабаваць</div>
-    <div class="try-box-steps">
-      Telegram: <strong>@NOWLOAD_BOT</strong><br>
-      /start → Хачу мець свае грошы → Польшча → Ці магу я тут працаваць / Патрэбна дапамога прама зараз
+  <div class="inner">
+    <div class="status-split">
+      <div>
+        <span class="lbl lbl-dark">Бягучы стан</span>
+        <h2>Што ўжо гатова</h2>
+        <div class="card-w">
+          <div class="card-w-ttl">Агульная структура Telegram-платформы</div>
+          <div class="card-w-dsc">Бот з тэматычнымі модулямі па ўсіх кірунках жыцця — архітэктура і навігацыя гатовыя</div>
+        </div>
+        <div class="card-w">
+          <div class="card-w-ttl">NowLoad: Грошы — частка раздзела</div>
+          <div class="card-w-dsc">Раздзел па магчымасцях працаўладкавання і легальным заробку ў Польшчы, раздзел экстраннай дапамогі ў праблемных сітуацыях</div>
+        </div>
+        <div class="try-w">
+          <div class="try-w-lbl">Як паспрабаваць</div>
+          <div class="try-w-steps">
+            Telegram: <strong>@NOWLOAD_BOT</strong><br>
+            /start → Хачу мець свае грошы → Польшча<br>
+            → Ці магу я тут працаваць / Патрэбна дапамога прама зараз
+          </div>
+        </div>
+      </div>
+
+      <!-- CSS Telegram phone mockup -->
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="tg-hdr">
+            <div class="tg-av">N</div>
+            <div>
+              <div class="tg-name">NowLoad</div>
+              <div class="tg-online">● online</div>
+            </div>
+          </div>
+          <div class="tg-body">
+            <div class="tg-msg">
+              Прывітанне! Я NowLoad 👋<br><br>
+              Дапамагу разабрацца з тым, што важна.<br><br>
+              Пра што думаеш?<br>
+              <em>NowLoad. Усё на(ў)ладзіцца.</em>
+            </div>
+            <div class="tg-btns">
+              <div class="tg-btn">💸 Хачу мець свае грошы</div>
+              <div class="tg-btn">🏠 Хачу самастойна жыць</div>
+              <div class="tg-btn">🤝 Хачу сяброў і адносіны</div>
+              <div class="tg-btn">📚 Хачу вучыцца</div>
+              <div class="tg-btn">🌿 Хачу быць здаравей</div>
+              <div class="tg-btn tg-btn-sos">🆘 Патрэбна дапамога прама зараз</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
 
-<!-- PARTNERSHIP -->
+<!-- ══ ПАРТНЁРСТВА ══ -->
 <section id="partnership">
-  <span class="section-label">Партнёрства</span>
-  <h2>Мажлівыя функцыі партнёраў</h2>
-  <div class="partner-grid">
-    <div class="partner-card">
-      <div class="partner-num">01</div>
-      <div class="partner-title">Тэставанне</div>
-      <div class="partner-desc">Тэставаць навучальныя і гульнявыя модулі на падлетках і моладзі (13–25 гадоў), збіраць зваротную сувязь і прапановы</div>
-    </div>
-    <div class="partner-card">
-      <div class="partner-num">02</div>
-      <div class="partner-title">Кантакты і рэсурсы</div>
-      <div class="partner-desc">Прапанаваць свае паслугі і кантакты ў адпаведныя раздзелы бота (юрыдычная дапамога, рэсурсныя пляцоўкі, адукацыйныя магчымасці)</div>
-    </div>
-    <div class="partner-card">
-      <div class="partner-num">03</div>
-      <div class="partner-title">Новыя раздзелы</div>
-      <div class="partner-desc">Даследаваць запыты і распрацоўваць новыя раздзелы бота (дадатковыя тэматыкі і юрысдыкцыі)</div>
-    </div>
-    <div class="partner-card">
-      <div class="partner-num">04</div>
-      <div class="partner-title">Афлайн-мерапрыемствы</div>
-      <div class="partner-desc">Распрацоўваць сцэнарыі і праграмы, праводзіць на сваіх пляцоўках і дзяліцца метадалогіяй з іншымі</div>
+  <div class="inner">
+    <span class="lbl" style="color:rgba(0,0,0,0.42)">Партнёрства</span>
+    <h2>Мажлівыя функцыі партнёраў</h2>
+    <div class="grid2">
+      <div class="card-l">
+        <div class="card-l-num">01</div>
+        <div class="card-l-ttl">Тэставанне</div>
+        <div class="card-l-dsc">Тэставаць навучальныя і гульнявыя модулі на падлетках і моладзі (13–25 гадоў), збіраць зваротную сувязь і прапановы</div>
+      </div>
+      <div class="card-l">
+        <div class="card-l-num">02</div>
+        <div class="card-l-ttl">Кантакты і рэсурсы</div>
+        <div class="card-l-dsc">Прапанаваць свае паслугі і кантакты ў адпаведныя раздзелы бота (юрыдычная дапамога, рэсурсныя пляцоўкі, адукацыйныя магчымасці)</div>
+      </div>
+      <div class="card-l">
+        <div class="card-l-num">03</div>
+        <div class="card-l-ttl">Новыя раздзелы</div>
+        <div class="card-l-dsc">Даследаваць запыты і распрацоўваць новыя раздзелы бота (дадатковыя тэматыкі і юрысдыкцыі)</div>
+      </div>
+      <div class="card-l">
+        <div class="card-l-num">04</div>
+        <div class="card-l-ttl">Афлайн-мерапрыемствы</div>
+        <div class="card-l-dsc">Распрацоўваць сцэнарыі і праграмы, праводзіць на сваіх пляцоўках і дзяліцца метадалогіяй з іншымі</div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
 
-<!-- GOVERNANCE -->
+<!-- ══ КІРАВАННЕ ══ -->
 <section id="governance">
-  <span class="section-label">Кіраванне</span>
-  <h2>Адкрытая і дэмакратычная сістэма</h2>
-  <p class="gov-text">Кожная партнёрская арганізацыя ці каманда распрацоўшчыкаў <span class="gov-highlight">прапарцыйна свайму ўдзелу</span> будзе мець месца ў структуры прыняцця рашэнняў і размеркаванні рэсурсаў праекта.</p>
-  <p class="gov-text">Мы прапануем адкрытую і дэмакратычную сістэму кіравання, якую будзем <span class="gov-highlight">выбудоўваць разам.</span></p>
-  <div class="gov-offline">
-    <strong>Афлайн-кампанент:</strong><br>
-    Сімуляцыйныя гульні на базе партнёрскіх цэнтраў як самастойны адукацыйны фармат — з магчымасцю маштабавання праз лакальных фасілітатараў.
+  <div class="inner">
+    <span class="lbl lbl-teal">Кіраванне</span>
+    <h2 style="color:var(--white)">Адкрытая і дэмакратычная сістэма</h2>
+    <p class="gov-txt">Кожная партнёрская арганізацыя ці каманда распрацоўшчыкаў <span class="gov-hl">прапарцыйна свайму ўдзелу</span> будзе мець месца ў структуры прыняцця рашэнняў і размеркаванні рэсурсаў праекта.</p>
+    <p class="gov-txt">Мы прапануем адкрытую і дэмакратычную сістэму кіравання, якую будзем <span class="gov-hl">выбудоўваць разам.</span></p>
+    <div class="gov-box">
+      <strong>Афлайн-кампанент:</strong><br>
+      Сімуляцыйныя гульні на базе партнёрскіх цэнтраў як самастойны адукацыйны фармат — з магчымасцю маштабавання праз лакальных фасілітатараў.
+    </div>
   </div>
 </section>
 
-<div class="divider"></div>
 
-<!-- CONTACTS -->
+<!-- ══ КАНТАКТЫ ══ -->
 <section id="contacts">
-  <span class="section-label">Кантакты</span>
-  <h2 style="max-width:600px; margin-bottom:20px;">Давайце зробім разам</h2>
-  <p class="contacts-mission">Калі Вам адгукаецца місія: <strong>умацавання эканамічнай самастойнасці, грамадзянскай суб'ектнасці і самарэалізацыі падлеткаў і моладзі</strong></p>
-  <p class="contacts-sublabel">— скантактуйцеся з намі:</p>
-  <div class="contact-list">
-    <div class="contact-item">
-      <div class="contact-dot"></div>
-      <a class="contact-link" href="mailto:grunt.brest.by@gmail.com">grunt.brest.by@gmail.com</a>
-    </div>
-    <div class="contact-item">
-      <div class="contact-dot"></div>
-      <a class="contact-link" href="mailto:adukatoryum@gmail.com">adukatoryum@gmail.com</a>
-    </div>
-    <div class="contact-item">
-      <div class="contact-dot"></div>
-      <a class="contact-link" href="https://t.me/jniven_2020" target="_blank">t.me/jniven_2020</a>
+  <div class="inner">
+    <div class="contacts-split">
+      <div>
+        <span class="lbl lbl-teal">Кантакты</span>
+        <h2 style="color:var(--white);margin-bottom:20px;">Давайце зробім разам</h2>
+        <p class="contacts-mission">Калі Вам адгукаецца місія: <strong>умацавання эканамічнай самастойнасці, грамадзянскай суб'ектнасці і самарэалізацыі падлеткаў і моладзі</strong></p>
+        <p class="contacts-sub">— скантактуйцеся з намі:</p>
+        <div class="clist">
+          <div class="citem"><div class="cdot"></div><a class="clink" href="mailto:grunt.brest.by@gmail.com">grunt.brest.by@gmail.com</a></div>
+          <div class="citem"><div class="cdot"></div><a class="clink" href="mailto:adukatoryum@gmail.com">adukatoryum@gmail.com</a></div>
+          <div class="citem"><div class="cdot"></div><a class="clink" href="https://t.me/jniven_2020" target="_blank">t.me/jniven_2020</a></div>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="contacts-deco-circle"></div>
-  <div class="contacts-deco-dot"></div>
 </section>
 
-<footer>
-  <div>
-    <div class="footer-brand">NowLoad</div>
+
+<!-- ── FOOTER ── -->
+<div class="s-footer">
+  <div class="footer-inner">
+    <div class="footer-wm"><span class="wm-now">Now</span><span class="wm-load">Load</span><span class="wm-dot">.</span></div>
     <div class="footer-tag">УСЁ НА(Ў)ЛАДЗІЦЦА</div>
   </div>
-  <a class="nav-cta" href="https://t.me/NOWLOAD_BOT" target="_blank">Паспрабаваць @NOWLOAD_BOT</a>
-</footer>
+</div>
 
 </body>
 </html>
