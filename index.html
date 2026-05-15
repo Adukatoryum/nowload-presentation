@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="be">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NowLoad — УСЁ НА(Ў)ЛАДЗІЦЦА</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    :root {
+      --bg:       #0b1a1f;
+      --bg2:      #0f2228;
+      --teal:     #00d4a0;
+      --teal2:    #00b88a;
+      --yellow:   #ffd166;
+      --white:    #ffffff;
+      --muted:    rgba(255,255,255,0.55);
+      --card:     rgba(255,255,255,0.05);
+      --card-border: rgba(0,212,160,0.2);
+    }
+
+    .reveal-viewport { background: var(--bg); }
+    .reveal { font-family: 'Inter', sans-serif; color: var(--white); }
+    .reveal .slides section { text-align: left; padding: 0 60px; }
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 { font-family: 'Inter', sans-serif; text-transform: none; letter-spacing: -0.02em; color: var(--white); }
+    .reveal p, .reveal li { line-height: 1.6; }
+
+    /* ──── SLIDE LABEL (КАНТЭКСТ, etc.) ──── */
+    .slide-label {
+      font-size: 0.65em;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    /* ──── SLIDE 1 — TITLE ──── */
+    .slide-title {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 0 80px !important;
+      overflow: hidden;
+    }
+    .slide-title .brand {
+      font-size: 4.5em;
+      font-weight: 900;
+      color: var(--teal);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 4px;
+    }
+    .slide-title .tagline {
+      font-size: 1em;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      margin-bottom: 32px;
+    }
+    .slide-title h2 {
+      font-size: 1.45em;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .slide-title .sub {
+      font-size: 0.78em;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .slide-title .invite {
+      display: inline-block;
+      font-size: 0.85em;
+      font-weight: 600;
+      color: var(--teal);
+      border: 1.5px solid var(--teal);
+      border-radius: 6px;
+      padding: 10px 22px;
+    }
+    /* decorative circle */
+    .deco-circle {
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0,212,160,0.25);
+      pointer-events: none;
+    }
+    .deco-circle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,212,160,0.15);
+    }
+    .deco-dot {
+      position: absolute;
+      right: 185px;
+      top: calc(50% - 160px);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+
+    /* ──── SLIDE 2 — КАНТЭКСТ ──── */
+    .slide-context .quote-wrap {
+      position: relative;
+      border-left: 3px solid var(--teal);
+      padding: 20px 28px;
+      background: var(--card);
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 24px;
+    }
+    .slide-context .quote-mark {
+      font-size: 3em;
+      color: var(--teal);
+      line-height: 0;
+      position: absolute;
+      top: 28px;
+      left: -2px;
+      font-family: Georgia, serif;
+    }
+    .slide-context .quote-text {
+      font-size: 0.8em;
+      color: var(--white);
+      line-height: 1.7;
+      padding-top: 8px;
+    }
+    .slide-context .quote-sub {
+      font-size: 0.76em;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      padding: 16px 20px;
+      background: var(--card);
+      border-radius: 8px;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 0.7em;
+      font-weight: 600;
+      color: var(--teal);
+      border: 1px solid rgba(0,212,160,0.4);
+      border-radius: 20px;
+      padding: 5px 14px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ──── SLIDE 3 — ПАДЫХОД ──── */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .approach-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px 20px;
+    }
+    .approach-num {
+      font-size: 2em;
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .approach-title {
+      font-size: 0.82em;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .approach-desc {
+      font-size: 0.72em;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .approach-intro {
+      font-size: 0.82em;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 620px;
+    }
+
+    /* ──── SLIDE 4 — ПЛАТФОРМА ──── */
+    .platform-active {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(0,212,160,0.08);
+      border: 1px solid rgba(0,212,160,0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .platform-badge {
+      font-size: 0.65em;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--teal);
+      border-radius: 4px;
+      padding: 3px 8px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .platform-active-text {
+      font-size: 0.82em;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.5;
+    }
+    .platform-queue {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .queue-item {
+      font-size: 0.72em;
+      color: var(--muted);
+      padding: 10px 14px;
+      background: var(--card);
+      border-radius: 8px;
+      border-left: 2px solid rgba(0,212,160,0.2);
+    }
+    .queue-item strong { color: rgba(255,255,255,0.8); }
+    .geo-note {
+      font-size: 0.68em;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 14px;
+    }
+
+    /* ──── SLIDE 5 — БЯГУЧЫ СТАН ──── */
+    .status-card {
+      background: var(--card);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 22px;
+      margin-bottom: 12px;
+    }
+    .status-card-title {
+      font-size: 0.82em;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+    .status-card-desc {
+      font-size: 0.74em;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+    }
+    .try-box {
+      margin-top: 20px;
+      background: rgba(0,212,160,0.06);
+      border: 1px solid rgba(0,212,160,0.25);
+      border-radius: 10px;
+      padding: 16px 22px;
+    }
+    .try-box-label {
+      font-size: 0.68em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .try-box-steps {
+      font-size: 0.74em;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+    }
+    .try-box-steps strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    /* ──── SLIDE 6 — ПАРТНЁРСТВА ──── */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .partner-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 22px 20px;
+    }
+    .partner-num {
+      font-size: 0.7em;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--teal);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .partner-title {
+      font-size: 0.84em;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .partner-desc {
+      font-size: 0.72em;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ──── SLIDE 7 — КІРАВАННЕ ──── */
+    .gov-text {
+      font-size: 0.85em;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-bottom: 20px;
+    }
+    .gov-highlight {
+      font-size: 0.82em;
+      font-weight: 600;
+      color: var(--teal);
+    }
+    .gov-offline {
+      background: var(--card);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 22px;
+      font-size: 0.78em;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+    }
+    .gov-offline strong { color: var(--white); }
+
+    /* ──── SLIDE 8 — CONTACTS ──── */
+    .slide-contacts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 0 80px !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .contacts-mission {
+      font-size: 0.8em;
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .contacts-mission strong { color: var(--white); }
+    .contacts-label {
+      font-size: 0.7em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .contact-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+    .contact-link {
+      font-size: 0.9em;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .contact-link:hover { color: var(--teal); }
+    .contacts-brand {
+      position: absolute;
+      bottom: 40px;
+      right: 80px;
+      text-align: right;
+    }
+    .contacts-brand .b-name {
+      font-size: 1.8em;
+      font-weight: 900;
+      color: var(--teal);
+      letter-spacing: -0.04em;
+    }
+    .contacts-brand .b-tag {
+      font-size: 0.65em;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ──── PROGRESS BAR ──── */
+    .reveal .progress { color: var(--teal); height: 3px; }
+    .reveal .controls { color: var(--teal); }
+
+    /* ──── SLIDE NUMBERS ──── */
+    .slide-counter {
+      position: fixed;
+      bottom: 20px;
+      right: 24px;
+      font-size: 0.62em;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.05em;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- SLIDE 1 — TITLE -->
+    <section class="slide-title">
+      <div class="brand">NowLoad</div>
+      <div class="tagline">УСЁ НА(Ў)ЛАДЗІЦЦА</div>
+      <h2>Чат-бот навігатар для беларускіх<br>падлеткаў і моладзі (13–25 гадоў)</h2>
+      <p class="sub">Адкрытая прапанова да лакальных цэнтраў і адукацыйных ініцыятыў у эміграцыі, спецыялістаў-адукатараў у Беларусі</p>
+      <div class="invite">Давайце зробім разам</div>
+      <div class="deco-circle"></div>
+      <div class="deco-dot"></div>
+    </section>
+
+    <!-- SLIDE 2 — КАНТЭКСТ -->
+    <section class="slide-context" style="padding-top: 48px;">
+      <span class="slide-label">Кантэкст</span>
+      <div class="quote-wrap">
+        <span class="quote-mark">❝</span>
+        <p class="quote-text">Нашы дзеці робяць першыя крокі ў свет самастойнасці — думаюць дзе зарабіць і куды ўкласці свае першыя грошы, як пачаць жыць асобна ад бацькоў, дзе вучыцца і як рэалізаваць свае творчыя памкненні.</p>
+      </div>
+      <p class="quote-sub">Яны робяць гэта ў надзвычай неспрыяльных, а часам небяспечных умовах эміграцыі і нестабільнасці фінансавай ды прававой сістэмы пры аўтарытарным рэжыме ў роднай краіне.</p>
+      <div class="tag-row">
+        <span class="tag">Грошы</span>
+        <span class="tag">Самастойнае жыццё</span>
+        <span class="tag">Камунікацыя</span>
+        <span class="tag">Адукацыя</span>
+        <span class="tag">Здароўе</span>
+        <span class="tag">Творчасць і самарэалізацыя</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 — ПАДЫХОД -->
+    <section style="padding-top: 48px;">
+      <span class="slide-label">Падыход</span>
+      <h3 style="font-size:1.3em; margin-bottom:12px;">Ад запыту — да кампетэнцыі</h3>
+      <p class="approach-intro">Падыход NowLoad адштурхоўваецца ад рэальных запытаў падлеткаў — не ад тэм, якія лічаць важнымі дарослыя. Падлетак прыходзіць за адказам на сваё пытанне — і ўходзіць з навыкам і разуменнем сваіх правоў.</p>
+      <div class="approach-grid">
+        <div class="approach-card">
+          <div class="approach-num">01</div>
+          <div class="approach-title">Анлайн-навігатар у Telegram</div>
+          <div class="approach-desc">Адказы на канкрэтныя жыццёвыя запыты — тут і зараз</div>
+        </div>
+        <div class="approach-card">
+          <div class="approach-num">02</div>
+          <div class="approach-title">Гульнявыя сцэнарыі ў боце</div>
+          <div class="approach-desc">Магчымасць адыграць сітуацыю, зрабіць выбар, убачыць наступствы</div>
+        </div>
+        <div class="approach-card">
+          <div class="approach-num">03</div>
+          <div class="approach-title">Сімуляцыйныя гульні афлайн</div>
+          <div class="approach-desc">На базе партнёрскіх цэнтраў — групавы досвед і сацыяльнае ўзаемадзеянне</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 — ПЛАТФОРМА -->
+    <section style="padding-top: 48px;">
+      <span class="slide-label">Платформа</span>
+      <h3 style="font-size:1.1em; margin-bottom:6px;">NowLoad-бот — Telegram-платформа тэматычных модуляў</h3>
+      <p style="font-size:0.72em; color:var(--muted); margin-bottom:18px;">Кожны модуль — асобны навігатар па важнай сферы жыцця</p>
+
+      <div class="platform-active">
+        <span class="platform-badge">▶ У распрацоўцы</span>
+        <span class="platform-active-text">NowLoad: <strong>Грошы</strong> — фінансавая граматнасць, легальны заробак, правы на працы</span>
+      </div>
+
+      <div class="platform-queue">
+        <div class="queue-item"><strong>Самастойнае жыццё</strong> — жыллё, быт, першая арэнда, бюджэт</div>
+        <div class="queue-item"><strong>Здароўе</strong> — медыцына, псіхалагічная падтрымка</div>
+        <div class="queue-item"><strong>Камунікацыя</strong> — адносіны, канфлікты, межы</div>
+        <div class="queue-item"><strong>Творчасць</strong> — як знайсці сябе ў новай краіне</div>
+        <div class="queue-item"><strong>Адукацыя</strong> — школа, ВНУ, курсы, стажыроўкі</div>
+      </div>
+
+      <div class="geo-note">
+        Геаграфія: <strong style="color:rgba(255,255,255,0.8)">Польшча → Літва → Германія і далей</strong> · Беларусь: тыя, хто застаецца, і тыя, хто плануе з'ехаць
+      </div>
+    </section>
+
+    <!-- SLIDE 5 — БЯГУЧЫ СТАН -->
+    <section style="padding-top: 48px;">
+      <span class="slide-label">Бягучы стан</span>
+      <h3 style="font-size:1.2em; margin-bottom:18px;">Што ўжо гатова</h3>
+
+      <div class="status-card">
+        <div class="status-card-title">Агульная структура Telegram-платформы</div>
+        <div class="status-card-desc">Бот з тэматычнымі модулямі па ўсіх кірунках жыцця — архітэктура і навігацыя гатовыя</div>
+      </div>
+      <div class="status-card">
+        <div class="status-card-title">NowLoad: Грошы — частка раздзела</div>
+        <div class="status-card-desc">Раздзел па магчымасцях працаўладкавання і легальным заробку ў Польшчы, раздзел экстраннай дапамогі ў праблемных сітуацыях</div>
+      </div>
+
+      <div class="try-box">
+        <div class="try-box-label">Як паспрабаваць</div>
+        <div class="try-box-steps">
+          Telegram: <strong>@NOWLOAD_BOT</strong><br>
+          /start → Хачу мець свае грошы → Польшча → Ці магу я тут працаваць / Патрэбна дапамога прама зараз
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 — ПАРТНЁРСТВА -->
+    <section style="padding-top: 48px;">
+      <span class="slide-label">Партнёрства</span>
+      <h3 style="font-size:1.2em; margin-bottom:6px;">Мажлівыя функцыі партнёраў</h3>
+      <div class="partner-grid">
+        <div class="partner-card">
+          <div class="partner-num">01</div>
+          <div class="partner-title">Тэставанне</div>
+          <div class="partner-desc">Тэставаць навучальныя і гульнявыя модулі на падлетках і моладзі (13–25 гадоў), збіраць зваротную сувязь і прапановы</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-num">02</div>
+          <div class="partner-title">Кантакты і рэсурсы</div>
+          <div class="partner-desc">Прапанаваць свае паслугі і кантакты ў адпаведныя раздзелы бота (юрыдычная дапамога, рэсурсныя пляцоўкі, адукацыйныя магчымасці)</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-num">03</div>
+          <div class="partner-title">Новыя раздзелы</div>
+          <div class="partner-desc">Даследаваць запыты і распрацоўваць новыя раздзелы бота (дадатковыя тэматыкі і юрысдыкцыі)</div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-num">04</div>
+          <div class="partner-title">Афлайн-мерапрыемствы</div>
+          <div class="partner-desc">Распрацоўваць сцэнарыі і праграмы, праводзіць на сваіх пляцоўках і дзяліцца метадалогіяй з іншымі</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 — КІРАВАННЕ -->
+    <section style="padding-top: 48px; position: relative; overflow: hidden;">
+      <span class="slide-label">Кіраванне</span>
+      <h3 style="font-size:1.2em; margin-bottom:18px;">Адкрытая і дэмакратычная сістэма</h3>
+
+      <p class="gov-text">Кожная партнёрская арганізацыя ці каманда распрацоўшчыкаў <span class="gov-highlight">прапарцыйна свайму ўдзелу</span> будзе мець месца ў структуры прыняцця рашэнняў і размеркаванні рэсурсаў праекта.</p>
+      <p class="gov-text">Мы прапануем адкрытую і дэмакратычную сістэму кіравання, якую будзем <span class="gov-highlight">выбудоўваць разам.</span></p>
+
+      <div class="gov-offline">
+        <strong>Афлайн-кампанент:</strong><br>
+        Сімуляцыйныя гульні на базе партнёрскіх цэнтраў як самастойны адукацыйны фармат — з магчымасцю маштабавання праз лакальных фасілітатараў.
+      </div>
+
+      <!-- decorative -->
+      <div style="position:absolute; right:-60px; bottom:-80px; width:320px; height:320px; border-radius:50%; border:1.5px solid rgba(0,212,160,0.15); pointer-events:none;"></div>
+      <div style="position:absolute; right:100px; bottom:140px; width:10px; height:10px; border-radius:50%; background:var(--yellow);"></div>
+    </section>
+
+    <!-- SLIDE 8 — CONTACTS -->
+    <section class="slide-contacts">
+      <p class="contacts-mission">Калі Вам адгукаецца місія: <strong>умацавання эканамічнай самастойнасці, грамадзянскай суб'ектнасці і самарэалізацыі падлеткаў і моладзі</strong></p>
+      <p class="contacts-label">— скантактуйцеся з намі:</p>
+
+      <div class="contact-item">
+        <div class="contact-dot"></div>
+        <a class="contact-link" href="mailto:grunt.brest.by@gmail.com">grunt.brest.by@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-dot"></div>
+        <a class="contact-link" href="mailto:adukatoryum@gmail.com">adukatoryum@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-dot"></div>
+        <a class="contact-link" href="https://t.me/jniven_2020" target="_blank">t.me/jniven_2020</a>
+      </div>
+
+      <div class="contacts-brand">
+        <div class="b-name">NowLoad</div>
+        <div class="b-tag">УСЁ НА(Ў)ЛАДЗІЦЦА</div>
+      </div>
+
+      <div style="position:absolute; right:-80px; top:50%; transform:translateY(-50%); width:360px; height:360px; border-radius:50%; border:1.5px solid rgba(0,212,160,0.15); pointer-events:none;"></div>
+      <div style="position:absolute; right:155px; top:calc(50% - 145px); width:10px; height:10px; border-radius:50%; background:var(--yellow);"></div>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    progress: true,
+    controls: true,
+    controlsLayout: 'bottom-right',
+    slideNumber: 'c/t',
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    backgroundTransition: 'fade',
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+  });
+</script>
+</body>
+</html>
